@@ -59,7 +59,7 @@ for (const [alias, actor] of Object.entries(actors)) {
   check(schemaHash(schema) === actor.schemaSha256, 'Input schema hash mismatch: ' + alias);
 }
 const publicFields = ['documentationUrl', 'supportUrl', 'privacyPolicyUrl', 'termsOfServiceUrl'];
-const releaseBlocks = publicFields.filter(key => !manifest[key]).map(key => 'Verified public URL pending owner-approved publication: ' + key);
-releaseBlocks.push('Owner publication/submission approval pending.', 'Anthropic portal source validation/security scan/review not run.');
-process.stdout.write(JSON.stringify({ localPackage: errors.length ? 'FAIL' : 'PASS', identity: `${manifest.name}@${manifest.version}`, fileCount: files.length, skills: skills.length, commands: 0, agents: 0, runtimeDependencies: 0, errors, externalRelease: 'PENDING', releaseBlocks }, null, 2) + '\n');
+const releaseBlocks = publicFields.filter(key => !manifest[key]).map(key => 'Public listing URL missing: ' + key);
+releaseBlocks.push('Public URL availability, owner authorization and Anthropic portal checks must be verified separately from this local validator.');
+process.stdout.write(JSON.stringify({ localPackage: errors.length ? 'FAIL' : 'PASS', identity: `${manifest.name}@${manifest.version}`, fileCount: files.length, skills: skills.length, commands: 0, agents: 0, runtimeDependencies: 0, errors, externalRelease: 'NOT_VERIFIED_BY_LOCAL_VALIDATOR', releaseBlocks }, null, 2) + '\n');
 process.exitCode = errors.length ? 1 : 0;

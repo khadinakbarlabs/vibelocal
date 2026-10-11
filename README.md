@@ -20,7 +20,7 @@ Maps positions, Search local-pack observations and organic results are kept sepa
 
 Requires Node.js 22 or later and a host with local shell/file access. There are no package dependencies, install hooks, MCP servers or background jobs. Install Node through your usual trusted process if needed; VibeLocal does not install it.
 
-From a downloaded source checkout:
+Download the native Claude ZIP from the [0.1.0 release](https://github.com/khadinakbarlabs/vibelocal/releases/tag/v0.1.0) and extract it, or clone the [public source repository](https://github.com/khadinakbarlabs/vibelocal). From the resulting plugin folder:
 
 ```sh
 node skills/vibelocal/scripts/cli.mjs help
@@ -32,7 +32,7 @@ Open the returned report path. The demo is fictional and uses no network or paid
 
 This source contains the native Claude manifest. The separate Agent Plugins ZIP is for a private Plugin Creator save on a compatible local host. It uses the same skills and helpers with a small host adapter. Do not mix the editions or copy one companion skill without its shared resources. Claude Code is the validated target; browser-only Claude and other hosts without local execution cannot run this CLI.
 
-Public repository and directory installation links will be added after owner approval and verified publication. A local archive is not a directory listing.
+The public GitHub release can be used with the local loading instructions above. Anthropic directory review and availability are separate: a public source release does not establish directory approval.
 
 ## Import-first workflow
 

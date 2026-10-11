@@ -1,6 +1,6 @@
 # Reviewer reproduction and evidence boundaries
 
-Candidate: VibeLocal 0.1.0. Target: local Claude Code, skills-only with contained CLI helpers. Requirements: Node.js 22+, local file/shell access; network and a dedicated user-selected Apify token file only for approved live runs. No `npx`, `uvx`, installation hooks, remote executable downloads, MCP server or automatic execution is required.
+Release: VibeLocal 0.1.0. Target: local Claude Code, skills-only with contained CLI helpers. Requirements: Node.js 22+, local file/shell access; network and a dedicated user-selected Apify token file only for approved live runs. No `npx`, `uvx`, installation hooks, remote executable downloads, MCP server or automatic execution is required.
 
 ## Safe reproduction
 
@@ -35,4 +35,4 @@ No Google profile/review/directory write is implemented. Actor schemas, exact bu
 
 Local test results, source/archive validation and public contract readbacks are recorded in the release evidence files. An illustrative demo is a demonstration of report generation, not live ranking data. A current schema/build read is not a paid Actor acceptance test. Local Claude validation is not Anthropic portal source validation or security review. Private Plugin Creator creation is not an Anthropic listing.
 
-No paid live run, baseline-versus-plugin model evaluation, independent agent review, Anthropic security scan, directory approval or public availability is claimed for this owner-review candidate.
+No paid live run, baseline-versus-plugin model evaluation, independent agent review, Anthropic security scan, directory approval or public availability is claimed by this source release. Check the developer portal for external scan and directory state.

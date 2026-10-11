@@ -1,6 +1,6 @@
-# Owner approval: VibeLocal 0.1.0
+# Approved listing: VibeLocal 0.1.0
 
-## Proposed directory copy
+## Directory copy
 
 **Title:** VibeLocal: GMB, Maps & Rankings
 
@@ -22,18 +22,18 @@
 
 The title preserves the requested brand and task terms. The description expands GMB to its current product name, uses natural local SEO terminology and states a practical result. It does not promise directory placement or ranking improvement.
 
-## Proposed release destinations
+## Release destinations
 
-The authenticated GitHub publisher is `khadinakbarlabs`; Apify Actor ownership remains `khadinakbar`. Proposed new public source repository: `khadinakbarlabs/vibelocal`. Publication must wait for owner approval.
+The owner approved this exact listing and publication/submission scope on 2026-10-11. The public source is `khadinakbarlabs/vibelocal`; Apify Actor ownership remains `khadinakbar`.
 
-After that repository is published, verify and add these exact HTTPS links to the native listing manifest:
+The following public HTTPS pages were verified before being added to the native manifest:
 
-- Documentation: `https://github.com/khadinakbarlabs/vibelocal#readme`
-- Support: `https://github.com/khadinakbarlabs/vibelocal/issues`
-- Privacy: `https://github.com/khadinakbarlabs/vibelocal/blob/main/PRIVACY.md`
-- Terms: `https://github.com/khadinakbarlabs/vibelocal/blob/main/TERMS.md`
+- [Documentation](https://github.com/khadinakbarlabs/vibelocal#readme)
+- [Support](https://github.com/khadinakbarlabs/vibelocal/issues)
+- [Privacy](https://github.com/khadinakbarlabs/vibelocal/blob/main/PRIVACY.md)
+- [Terms](https://github.com/khadinakbarlabs/vibelocal/blob/main/TERMS.md)
 
-The existing developer portfolio uses `hello@khadinakbar.com`; propose that contact for the directory's owner contact field, subject to this approval. Do not treat these draft URLs as already live. Update SUPPORT.md and the manifest only after verified publication.
+Approved developer contact: `hello@khadinakbar.com`. A directory submission or GitHub release is distinct from Anthropic approval and live directory availability.
 
 ## Data disclosure for submission
 
@@ -43,6 +43,6 @@ The event cap does not guarantee a total invoice ceiling when separate platform 
 
 ## Approval scope
 
-Approve this copy, icon, 0.1.0 source/package, MIT license, public data disclosures, new public GitHub repository under `khadinakbarlabs`, the proposed developer contact and an Anthropic directory submission. Publication preparation may add the verified URLs above and their installation instructions; any material behavior or listing change needs review again. No paid Actor run is included in this approval.
+Owner approval covers this copy, icon, 0.1.0 source/package, MIT license, public data disclosures, the new public GitHub repository under `khadinakbarlabs`, the developer contact and an Anthropic directory submission. Publication preparation may add the verified URLs above and their installation instructions; any material behavior or listing change needs review again. No paid Actor run is included in this approval.
 
 External source validation, Anthropic security scanning, review and directory availability are subsequent separate states. The submission portal's owner attestations must reflect the actual package and current terms. Its UI and any new feedback will be inspected before submission.
