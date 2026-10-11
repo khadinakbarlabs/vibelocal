@@ -1,0 +1,97 @@
+{
+  "$schema": "https://apify.com/schemas/v1/input.ide.json",
+  "title": "Google Maps Extractor",
+  "description": "Extract structured Google Maps place data from a keyword plus location, or from direct Google Maps search and place URLs. Built for sales research, local SEO, market mapping, and AI-agent workflows.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "searchQuery": {
+      "title": "Search query",
+      "type": "string",
+      "description": "Use this when you want to search Google Maps by business type or keyword. Accepted format is plain text such as 'dentists' or 'coffee shops'. Defaults to 'dentists' when no URLs are provided. This is not a Google Maps URL; paste URLs into Google Maps URLs.",
+      "editor": "textfield",
+      "prefill": "dentists",
+      "example": "coffee shops"
+    },
+    "location": {
+      "title": "Location",
+      "type": "string",
+      "description": "Use this when the search query needs a city, region, or country. Accepted format is 'Miami, FL', 'London, UK', or another natural Maps location. Defaults to 'Miami, FL' for health checks. Leave empty only when every Google Maps URL already contains the target area.",
+      "editor": "textfield",
+      "prefill": "Miami, FL",
+      "example": "Austin, TX"
+    },
+    "startUrls": {
+      "title": "Google Maps URLs",
+      "type": "array",
+      "description": "Use this when you already have Google Maps search or place URLs. Accepted entries are objects with a url field, such as {'url':'https://www.google.com/maps/search/dentists+Miami'}. Defaults to an empty list. This is not for normal website URLs outside Google Maps.",
+      "editor": "requestListSources",
+      "default": [],
+      "prefill": []
+    },
+    "maxResults": {
+      "title": "Max places",
+      "type": "integer",
+      "description": "Use this to cap how many Google Maps places are returned and charged. Accepted range is 1 to 2000; use 5-10 for testing and 50-200 for campaigns. Defaults to 20. This is not a page-count setting; one result means one place record.",
+      "default": 20,
+      "prefill": 20,
+      "minimum": 1,
+      "maximum": 2000
+    },
+    "minRating": {
+      "title": "Minimum rating",
+      "type": "number",
+      "description": "Use this to keep only places at or above a Google rating threshold. Accepted values are 0 through 5, for example 4.2. Defaults to 0, which keeps unrated and rated places. This is not a review-count filter.",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 5
+    },
+    "skipClosedPlaces": {
+      "title": "Skip permanently closed places",
+      "type": "boolean",
+      "description": "Use this to avoid businesses Google marks as permanently closed. Accepted value is true or false. Defaults to true for lead and market research freshness. This does not remove places that are only closed outside business hours.",
+      "default": true
+    },
+    "includeWebsiteContacts": {
+      "title": "Scan business websites for contact links",
+      "type": "boolean",
+      "description": "Use this when you want a lightweight scan of each listed website for public email and social profile links. Accepted value is true or false. Defaults to false to keep Google Maps extraction fast and predictable. This is not deep lead enrichment or email verification.",
+      "default": false
+    },
+    "language": {
+      "title": "Language",
+      "type": "string",
+      "description": "Use this to choose the Google Maps interface language for names, categories, and addresses. Accepted examples include 'en', 'es', 'fr', 'de', and 'ja'. Defaults to 'en'. This does not translate data after extraction.",
+      "editor": "select",
+      "enum": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "it",
+        "pt",
+        "nl",
+        "pl",
+        "ru",
+        "ja",
+        "ko",
+        "zh-CN",
+        "ar",
+        "tr",
+        "hi"
+      ],
+      "default": "en",
+      "prefill": "en"
+    },
+    "countryCode": {
+      "title": "Proxy country",
+      "type": "string",
+      "description": "Use this to route the browser through an Apify residential proxy in the target country. Accepted format is a two-letter ISO code such as 'US', 'GB', or 'DE'. Defaults to 'US'. This is not a location filter; use Location for the search area.",
+      "editor": "textfield",
+      "default": "US",
+      "prefill": "US",
+      "example": "US"
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="VibeLocal location and ranking icon">
+  <rect width="512" height="512" rx="112" fill="#173f36"/>
+  <path d="M220 90c-73 0-132 56-132 126 0 83 92 175 132 209 40-34 132-126 132-209 0-70-59-126-132-126Z" fill="#eaf4e8"/>
+  <circle cx="220" cy="213" r="57" fill="#173f36"/>
+  <rect x="282" y="316" width="34" height="91" rx="10" fill="#a6d1a2"/>
+  <rect x="332" y="264" width="34" height="143" rx="10" fill="#bde0af"/>
+  <rect x="382" y="208" width="34" height="199" rx="10" fill="#dcf0cc"/>
+</svg>

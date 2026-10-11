@@ -1,0 +1,106 @@
+{
+  "title": "Google Local Pack Results API input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "queries": {
+      "title": "Google search queries",
+      "type": "array",
+      "description": "Local-intent searches to snapshot, such as ['dentist near me', 'emergency dentist']. Each query runs at every supplied location. Provide 1–100 non-empty queries; this Actor does not generate keywords.",
+      "editor": "stringList",
+      "prefill": [
+        "dentist near me"
+      ],
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 700
+      }
+    },
+    "locations": {
+      "title": "Search locations",
+      "type": "array",
+      "description": "Each location must specify exactly one of locationCode, locationName, or locationCoordinate. Coordinates are best for a precise neighborhood snapshot and must be latitude,longitude,radius in metres. Maximum 25 locations and 500 total query/location snapshots per run.",
+      "editor": "json",
+      "prefill": [
+        {
+          "label": "Downtown New York",
+          "locationCoordinate": "40.7128,-74.0060,500"
+        }
+      ],
+      "minItems": 1,
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Location label",
+            "description": "Human-readable name for the snapshot, e.g. Downtown New York."
+          },
+          "locationCode": {
+            "type": "integer",
+            "title": "DataForSEO location code",
+            "description": "DataForSEO Google location code, e.g. 2840 for the United States. Do not combine with locationName or locationCoordinate."
+          },
+          "locationName": {
+            "type": "string",
+            "title": "DataForSEO location name",
+            "description": "Full DataForSEO location name, e.g. New York,New York,United States. Do not combine with another location selector."
+          },
+          "locationCoordinate": {
+            "type": "string",
+            "title": "GPS coordinate and radius",
+            "description": "latitude,longitude,radius in metres, e.g. 40.7128,-74.0060,500. The radius must be 199–199999 metres."
+          }
+        }
+      }
+    },
+    "languageCode": {
+      "title": "Search language",
+      "type": "string",
+      "description": "the keyword-data API Google language code, e.g. en or es. Defaults to en; it controls the SERP language, not the location.",
+      "editor": "textfield",
+      "default": "en",
+      "prefill": "en",
+      "minLength": 2,
+      "maxLength": 10
+    },
+    "device": {
+      "title": "Device",
+      "type": "string",
+      "description": "Google result layout to request. Local-pack appearance can vary by device.",
+      "editor": "select",
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "default": "desktop",
+      "prefill": "desktop"
+    },
+    "seDomain": {
+      "title": "Google domain",
+      "type": "string",
+      "description": "Optional Google domain such as google.com, google.co.uk, or google.de. Leave blank to let the keyword-data API choose a domain for the selected language and location.",
+      "editor": "textfield",
+      "prefill": "google.com",
+      "maxLength": 100
+    },
+    "maxLocalPackResults": {
+      "title": "Maximum local-pack businesses per snapshot",
+      "type": "integer",
+      "description": "Maximum local-pack businesses to return from each Google SERP block. Defaults to 3 to match the common local 3-pack; use up to 20 only when the provider returns more businesses in the local-pack block.",
+      "editor": "number",
+      "default": 3,
+      "prefill": 3,
+      "minimum": 1,
+      "maximum": 20
+    }
+  },
+  "required": [
+    "queries",
+    "locations"
+  ]
+}

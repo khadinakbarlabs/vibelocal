@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "search_query": {
+      "type": "string",
+      "title": "Search Query",
+      "description": "The exact search query string submitted to Google to produce this result set.",
+      "example": "best project management software 2025"
+    },
+    "results_page": {
+      "type": "integer",
+      "title": "Results Page",
+      "description": "The page number of Google search results (1 = positions 1–10, 2 = positions 11–20, etc.).",
+      "example": 1
+    },
+    "total_results_count": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Total Results Count",
+      "description": "Google's estimated count of total results for this query (e.g. 'About 2,450,000,000 results (0.38 seconds)'). May be null if not shown on the page.",
+      "example": "About 2,450,000,000 results (0.38 seconds)"
+    },
+    "country_code": {
+      "type": "string",
+      "title": "Country Code",
+      "description": "The ISO 3166-1 alpha-2 country code (gl parameter) used to query this regional Google index.",
+      "example": "US"
+    },
+    "language_code": {
+      "type": "string",
+      "title": "Language Code",
+      "description": "The BCP-47 language code (hl parameter) used for Google's interface and results language bias.",
+      "example": "en"
+    },
+    "organic_results": {
+      "type": "array",
+      "title": "Organic Results",
+      "description": "Array of non-paid organic search results. Each item: position (integer), title (string|null), url (string|null), display_url (string|null), description (string|null), date (string|null), sitelinks (array|null), emphasized_keywords (string[]|null).",
+      "example": [
+        {
+          "position": 1,
+          "title": "10 Best Project Management Software in 2025",
+          "url": "https://example.com/pm-software",
+          "display_url": "example.com › tools › project-management",
+          "description": "Compare the top project management tools including Asana, Monday.com, Jira, and Trello...",
+          "date": "Jan 15, 2025",
+          "sitelinks": [
+            {
+              "title": "Free Trial",
+              "url": "https://example.com/trial"
+            }
+          ],
+          "emphasized_keywords": [
+            "project management software",
+            "2025"
+          ]
+        }
+      ]
+    },
+    "featured_snippet": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Featured Snippet",
+      "description": "The featured snippet (answer box / Position 0) when present. Contains: title (string|null), description (string|null), url (string|null). Null if no featured snippet on this SERP.",
+      "example": {
+        "title": "What is project management software?",
+        "description": "Project management software is a tool that helps teams plan, organize, and manage tasks...",
+        "url": "https://example.com/pm-guide"
+      }
+    },
+    "people_also_ask": {
+      "type": "array",
+      "title": "People Also Ask",
+      "description": "Array of related questions from the 'People Also Ask' section. Useful for FAQ content, topic ideation, and search intent analysis. Empty array if section not present.",
+      "example": [
+        "What is the best free project management tool?",
+        "Is Jira free to use?",
+        "What do project managers use to manage tasks?"
+      ]
+    },
+    "related_searches": {
+      "type": "array",
+      "title": "Related Searches",
+      "description": "Array of related search suggestions shown at the bottom of the SERP. Excellent for keyword research, competitor discovery, and topic clustering. Empty array if not present.",
+      "example": [
+        "project management software free",
+        "best pm tools comparison 2025",
+        "asana vs monday.com vs jira"
+      ]
+    },
+    "knowledge_graph": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Knowledge Graph",
+      "description": "Entity Knowledge Graph panel when present. Contains: title (string|null), type (string|null), description (string|null), website (string|null). Null if no Knowledge Graph panel on this SERP.",
+      "example": {
+        "title": "Asana",
+        "type": "Software company",
+        "description": "Asana is a web and mobile work management platform designed to help teams organize, track, and manage their work.",
+        "website": "https://asana.com"
+      }
+    },
+    "ad_results": {
+      "type": "array",
+      "title": "Ad Results",
+      "description": "Paid advertisement results (Google Ads) found on the page. Each item: title (string|null), url (string|null), description (string|null), display_url (string|null). Empty array if no ads found or includeAds is disabled.",
+      "example": [
+        {
+          "title": "Top PM Software — Try Free Today",
+          "url": "https://ads-example.com",
+          "description": "Manage projects easily with real-time dashboards. 30-day free trial.",
+          "display_url": "ads-example.com › project-management"
+        }
+      ]
+    },
+    "search_type": {
+      "type": "string",
+      "title": "Search Type",
+      "description": "The type of Google search performed. Currently always 'web' for standard Google web search results.",
+      "example": "web"
+    },
+    "scraped_at": {
+      "type": "string",
+      "title": "Scraped At",
+      "description": "ISO 8601 UTC timestamp of when this SERP page was scraped. Useful for tracking result freshness.",
+      "example": "2026-04-08T10:30:00.000Z"
+    },
+    "source_url": {
+      "type": "string",
+      "title": "Source URL",
+      "description": "The exact Google Search URL that was scraped to produce this result. Can be used to replicate the search.",
+      "example": "https://www.google.com/search?q=best+project+management+software&hl=en&gl=US&num=10"
+    }
+  },
+  "required": [
+    "search_query",
+    "results_page",
+    "country_code",
+    "language_code",
+    "organic_results",
+    "people_also_ask",
+    "related_searches",
+    "ad_results",
+    "search_type",
+    "scraped_at",
+    "source_url"
+  ]
+}

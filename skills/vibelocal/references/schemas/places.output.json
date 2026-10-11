@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "business_name": {
+      "type": "string",
+      "title": "Business name",
+      "description": "The place or business name as displayed on Google Maps.",
+      "example": "Relax and Smile Dental Care"
+    },
+    "category": {
+      "type": "string",
+      "title": "Category",
+      "description": "Primary Google Maps category for the place.",
+      "example": "Dentist"
+    },
+    "full_address": {
+      "type": "string",
+      "title": "Full address",
+      "description": "Complete address shown on Google Maps.",
+      "example": "123 Ocean Dr, Miami, FL 33139, USA"
+    },
+    "phone": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Phone",
+      "description": "Phone number listed on Google Maps, or null when unavailable.",
+      "example": "+1 305-555-0123"
+    },
+    "website": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Website",
+      "description": "Official website URL listed on Google Maps, or null when unavailable.",
+      "example": "https://relaxandsmiledental.com"
+    },
+    "rating": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "title": "Rating",
+      "description": "Average Google rating from 1.0 to 5.0, or null when unavailable.",
+      "example": 4.7
+    },
+    "review_count": {
+      "type": "integer",
+      "title": "Review count",
+      "description": "Total number of Google reviews found for the place.",
+      "example": 238
+    },
+    "latitude": {
+      "type": "number",
+      "title": "Latitude",
+      "description": "Latitude coordinate parsed from the Google Maps page URL.",
+      "example": 25.7617
+    },
+    "longitude": {
+      "type": "number",
+      "title": "Longitude",
+      "description": "Longitude coordinate parsed from the Google Maps page URL.",
+      "example": -80.1918
+    },
+    "google_maps_url": {
+      "type": "string",
+      "title": "Google Maps URL",
+      "description": "Direct Google Maps URL for this place.",
+      "example": "https://www.google.com/maps/place/..."
+    },
+    "place_id": {
+      "type": "string",
+      "title": "Place ID",
+      "description": "Google Maps place identifier or feature token parsed from the URL.",
+      "example": "0x88d9b6..."
+    },
+    "website_email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Website email",
+      "description": "First public email found during optional website contact scan, or null.",
+      "example": "info@example.com"
+    },
+    "facebook_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Facebook URL",
+      "description": "Facebook profile URL found during optional website contact scan, or null.",
+      "example": "https://facebook.com/examplebusiness"
+    },
+    "instagram_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Instagram URL",
+      "description": "Instagram profile URL found during optional website contact scan, or null.",
+      "example": "https://instagram.com/examplebusiness"
+    },
+    "linkedin_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "LinkedIn URL",
+      "description": "LinkedIn profile or company URL found during optional website contact scan, or null.",
+      "example": "https://linkedin.com/company/examplebusiness"
+    },
+    "x_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "X URL",
+      "description": "X/Twitter profile URL found during optional website contact scan, or null.",
+      "example": "https://x.com/examplebusiness"
+    },
+    "is_permanently_closed": {
+      "type": "boolean",
+      "title": "Permanently closed",
+      "description": "True when Google Maps marks the place as permanently closed.",
+      "example": false
+    },
+    "scraped_at": {
+      "type": "string",
+      "title": "Scraped at",
+      "description": "ISO 8601 timestamp of when this place record was extracted.",
+      "example": "2026-06-12T12:33:20.286Z"
+    },
+    "source_query": {
+      "type": "string",
+      "title": "Source query",
+      "description": "The search query, location, or Google Maps URL that produced this record.",
+      "example": "dentists in Miami, FL"
+    }
+  },
+  "required": [
+    "business_name",
+    "category",
+    "full_address",
+    "review_count",
+    "latitude",
+    "longitude",
+    "google_maps_url",
+    "place_id",
+    "is_permanently_closed",
+    "scraped_at",
+    "source_query"
+  ]
+}

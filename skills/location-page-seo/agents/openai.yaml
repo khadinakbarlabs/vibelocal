@@ -1,0 +1,4 @@
+interface:
+  display_name: "Location Page SEO"
+  short_description: "Audit authentic local landing pages"
+  default_prompt: "Use $location-page-seo to review this branch page and prepare accurate content and schema drafts."

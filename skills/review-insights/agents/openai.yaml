@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Insights"
+  short_description: "Find themes and draft owner replies"
+  default_prompt: "Use $review-insights to analyze this business's review sample and draft replies for approval."

@@ -1,0 +1,151 @@
+{
+  "title": "Local Rank Tracker input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "businessName": {
+      "title": "Business name",
+      "type": "string",
+      "description": "The business name to find in Google Maps local results (e.g. 'Acme Dental'). Use the name shown on the Business Profile. This is a matching hint, not a Google Business Profile ID.",
+      "editor": "textfield",
+      "prefill": "Acme Dental",
+      "minLength": 2,
+      "maxLength": 200
+    },
+    "providerMode": {
+      "title": "DataForSEO provider mode",
+      "type": "string",
+      "description": "Cost-optimized Standard priority is the default and typically costs about $0.0006 per SERP task; choose Live only when a realtime result is worth about $0.002. The Actor rejects provider responses above $0.006 per check so the $0.06 event retains at least a 70% contribution-margin floor after Apify's 80% share.",
+      "editor": "select",
+      "enum": [
+        "standard",
+        "live"
+      ],
+      "default": "standard",
+      "prefill": "standard",
+      "example": "standard"
+    },
+    "targetDomain": {
+      "title": "Business website domain",
+      "type": "string",
+      "description": "Optional website domain used as a stronger match signal (e.g. 'acmedental.com'). Enter a domain only, without https:// or a path. This does not crawl the website or verify ownership.",
+      "editor": "textfield",
+      "prefill": "acmedental.com"
+    },
+    "placeId": {
+      "title": "Google place ID",
+      "type": "string",
+      "description": "Optional stable Google place identifier for exact matching when the provider returns it. Example: 'ChIJ...'. This is not an Apify Actor ID and cannot be discovered by this run.",
+      "editor": "textfield"
+    },
+    "cid": {
+      "title": "Google CID",
+      "type": "string",
+      "description": "Optional Google client ID for a local establishment. Example: '1234567890123456789'. Use this when your business already has a known CID; it is stronger than name-only matching.",
+      "editor": "textfield"
+    },
+    "keywords": {
+      "title": "Keywords",
+      "type": "array",
+      "description": "Search terms to check, such as ['dentist near me', 'emergency dentist']. Each keyword is tested at every location. Provide 1–20 terms; this Actor does not generate keyword ideas.",
+      "editor": "stringList",
+      "prefill": [
+        "dentist near me",
+        "emergency dentist"
+      ],
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "locations": {
+      "title": "Search locations",
+      "type": "array",
+      "description": "Geographic points where each keyword is checked. Each object must set exactly one of locationCode, locationName, or locationCoordinate. Coordinates make a geo-grid possible; use 'latitude,longitude' or 'latitude,longitude,radius'. Maximum 25 locations.",
+      "editor": "json",
+      "prefill": [
+        {
+          "label": "Downtown",
+          "locationCoordinate": "40.7128,-74.0060,500"
+        }
+      ],
+      "minItems": 1,
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Grid point label",
+            "description": "Human-readable label for this point, such as 'Downtown' or 'Northwest'."
+          },
+          "locationCode": {
+            "type": "integer",
+            "title": "DataForSEO location code",
+            "description": "DataForSEO Google location code, such as 2840 for the United States. Use instead of locationName or locationCoordinate."
+          },
+          "locationName": {
+            "type": "string",
+            "title": "DataForSEO location name",
+            "description": "Full DataForSEO location name, such as 'New York,New York,United States'. Use instead of locationCode or locationCoordinate."
+          },
+          "locationCoordinate": {
+            "type": "string",
+            "title": "GPS coordinate",
+            "description": "Coordinate snapshot in 'latitude,longitude' or 'latitude,longitude,radius' format, such as '40.7128,-74.0060,500'. Use instead of locationCode or locationName."
+          }
+        }
+      }
+    },
+    "languageCode": {
+      "title": "Search language",
+      "type": "string",
+      "description": "the keyword-data API Google language code for the snapshot, such as 'en' or 'es'. Defaults to 'en'. This controls result language and is not a country selector.",
+      "editor": "textfield",
+      "default": "en",
+      "prefill": "en"
+    },
+    "device": {
+      "title": "Device",
+      "type": "string",
+      "description": "Device profile used for the Google snapshot. 'desktop' returns up to the requested depth; 'mobile' follows Google's mobile result layout. Defaults to desktop.",
+      "editor": "select",
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "default": "desktop",
+      "prefill": "desktop",
+      "example": "desktop"
+    },
+    "depth": {
+      "title": "Maps result depth",
+      "type": "integer",
+      "description": "How many Google Maps businesses the keyword-data API should inspect per check (e.g. 100). Defaults to 100; higher depth can increase provider charges, while this Actor's Apify event remains one check row. This is Maps result depth, not an organic SERP depth.",
+      "editor": "number",
+      "default": 100,
+      "minimum": 20,
+      "maximum": 100,
+      "prefill": 100,
+      "example": 100
+    },
+    "competitorNames": {
+      "title": "Competitor names",
+      "type": "array",
+      "description": "Optional business names to locate in the same returned Google Maps rows. Example: ['Rival Dental']. Name matching is exact after normalization; competitor rows are not separate checks or separate charges.",
+      "editor": "stringList",
+      "prefill": [],
+      "maxItems": 20,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "businessName",
+    "keywords",
+    "locations"
+  ]
+}

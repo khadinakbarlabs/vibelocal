@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "externalId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "External ID",
+      "description": "Caller-owned CRM, spreadsheet, or location key returned unchanged.",
+      "example": "location-001"
+    },
+    "businessName": {
+      "type": "string",
+      "title": "Business name",
+      "description": "Caller-provided canonical business name.",
+      "example": "Example Bakery"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone",
+      "description": "Caller-provided canonical phone normalized to digits for comparison.",
+      "example": "12125550100"
+    },
+    "address": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Address",
+      "description": "Caller-provided canonical street address when supplied.",
+      "example": "123 Example Street"
+    },
+    "city": {
+      "type": "string",
+      "title": "City",
+      "description": "Caller-provided city used for search precision.",
+      "example": "New York"
+    },
+    "state": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "State or region",
+      "description": "Caller-provided state, province, or region when supplied.",
+      "example": "NY"
+    },
+    "website": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Website",
+      "description": "Caller-provided canonical website when supplied.",
+      "example": "https://example.com"
+    },
+    "country": {
+      "type": "string",
+      "title": "Search country",
+      "description": "Country configured for Google directory discovery.",
+      "example": "US"
+    },
+    "directoriesChecked": {
+      "type": "integer",
+      "title": "Directories checked",
+      "description": "Number of fixed directory domains searched for this business.",
+      "example": 15
+    },
+    "directoriesFound": {
+      "type": "integer",
+      "title": "Directories found",
+      "description": "Directories with a same-domain organic search result.",
+      "example": 9
+    },
+    "directoriesMissing": {
+      "type": "integer",
+      "title": "Directories missing",
+      "description": "Directories without a same-domain organic result in the inspected search result set. This is not proof the directory has no listing.",
+      "example": 6
+    },
+    "directoriesWithObservedMismatch": {
+      "type": "integer",
+      "title": "Directories with observed mismatch",
+      "description": "Found directories where an observed comparison signal disagreed with canonical caller input.",
+      "example": 1
+    },
+    "directoriesWithInsufficientEvidence": {
+      "type": "integer",
+      "title": "Directories with insufficient evidence",
+      "description": "Found directories whose snippet did not expose enough NAP evidence to assess every supplied signal.",
+      "example": 4
+    },
+    "observedCitationHealthScore": {
+      "type": "integer",
+      "title": "Observed citation health score",
+      "description": "0 to 100 transparency score calculated from discovered coverage and complete non-mismatching snippet evidence; it is not a ranking, visibility, or sync guarantee.",
+      "minimum": 0,
+      "maximum": 100,
+      "example": 63
+    },
+    "directories": {
+      "type": "array",
+      "title": "Directory evidence",
+      "description": "One source-linked finding per directory, including match states and search query.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "source": {
+      "type": "string",
+      "title": "Source",
+      "description": "Provenance for directory discovery and snippet evidence.",
+      "example": "google_site_search_via_owned_serp_actor"
+    },
+    "sourceRunId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Source run ID",
+      "description": "ID of the owned Google SERP sub-run used for this business when available.",
+      "example": "exampleRunId"
+    },
+    "collectedAt": {
+      "type": "string",
+      "title": "Collected at",
+      "description": "ISO 8601 timestamp when the audit record was created.",
+      "example": "2026-08-31T00:00:00.000Z"
+    }
+  },
+  "required": [
+    "businessName",
+    "phone",
+    "city",
+    "country",
+    "directoriesChecked",
+    "directoriesFound",
+    "directoriesMissing",
+    "directoriesWithObservedMismatch",
+    "directoriesWithInsufficientEvidence",
+    "observedCitationHealthScore",
+    "directories",
+    "source",
+    "collectedAt"
+  ]
+}

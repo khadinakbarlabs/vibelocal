@@ -1,0 +1,25 @@
+{
+  "name": "vibelocal",
+  "displayName": "VibeLocal: GMB, Maps & Rankings",
+  "version": "0.1.0",
+  "description": "Audit Google Business Profile (GMB), track Google Maps rankings, compare local competitors, and turn reviews, citations and location-page evidence into a prioritized local SEO action plan.",
+  "author": { "name": "Khadin Akbar" },
+  "license": "MIT",
+  "keywords": ["local-seo", "google-business-profile", "gmb", "google-maps", "rank-tracking", "local-pack", "citations", "reviews", "location-pages"],
+  "icon": "./assets/vibelocal.svg",
+  "userConfig": {
+    "apify_token_file": {
+      "type": "file",
+      "title": "Private Apify token file path",
+      "description": "Optional path to a dedicated private file you create locally with VibeLocal auth. Enter a file path only, never a token. Needed only for approved live collection.",
+      "required": false
+    }
+  },
+  "metadata": {
+    "execution": "skills-only-cli",
+    "minimumNodeVersion": "22",
+    "backendOwner": "khadinakbar",
+    "backendContractChecked": "2026-10-11",
+    "supportsOfflineImports": true
+  }
+}

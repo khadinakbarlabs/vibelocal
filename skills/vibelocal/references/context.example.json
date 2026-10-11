@@ -1,0 +1,20 @@
+{
+  "format": "vibelocal-context/1",
+  "businessName": "Example business",
+  "branchId": "owner-assigned-branch-001",
+  "type": "service-area",
+  "website": "https://example.com/",
+  "country": "US",
+  "city": "Example City",
+  "serviceAreas": ["Example City"],
+  "primaryServices": ["Owner-confirmed service"],
+  "publicPhone": "",
+  "mapsUrl": "",
+  "placeId": "",
+  "goal": "Choose the next local SEO improvement",
+  "sources": [],
+  "unresolvedConflicts": [],
+  "approvedPlans": [],
+  "receiptFiles": [],
+  "nextAction": "Confirm the public profile and primary service"
+}

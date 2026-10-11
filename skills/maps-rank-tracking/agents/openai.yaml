@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maps Rank Tracking"
+  short_description: "Measure comparable Maps rankings"
+  default_prompt: "Use $maps-rank-tracking to plan a small Google Maps ranking baseline for this branch."

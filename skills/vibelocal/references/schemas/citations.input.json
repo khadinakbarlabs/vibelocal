@@ -1,0 +1,99 @@
+{
+  "title": "Yext Alternative local listing audit input",
+  "description": "Audit public directory evidence for businesses you already know. The Actor audits visibility and observed NAP signals; it does not claim, create, update, suppress, or synchronize directory listings.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "businesses": {
+      "title": "Known businesses to audit",
+      "type": "array",
+      "description": "One to 50 business records you already know. Each needs businessName, phone, and city; address, state, website, and externalId improve matching and are returned as caller-provided context.",
+      "editor": "json",
+      "minItems": 1,
+      "maxItems": 50,
+      "prefill": [
+        {
+          "businessName": "Example Bakery",
+          "phone": "+1 212 555 0100",
+          "address": "123 Example Street",
+          "city": "New York",
+          "state": "NY",
+          "website": "https://example.com",
+          "externalId": "location-001"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "businessName": {
+            "title": "Business name",
+            "type": "string",
+            "description": "The known public-facing business name, for example Example Bakery."
+          },
+          "phone": {
+            "title": "Phone",
+            "type": "string",
+            "description": "The business telephone number with country code when available, for example +1 212 555 0100."
+          },
+          "city": {
+            "title": "City",
+            "type": "string",
+            "description": "The business's known city, used to make directory site searches more precise."
+          },
+          "address": {
+            "title": "Street address",
+            "type": "string",
+            "description": "Optional canonical street address used only for evidence comparison."
+          },
+          "state": {
+            "title": "State or region",
+            "type": "string",
+            "description": "Optional canonical state, province, or region used only for evidence comparison."
+          },
+          "website": {
+            "title": "Website",
+            "type": "string",
+            "description": "Optional canonical business website URL used only for evidence comparison."
+          },
+          "externalId": {
+            "title": "External ID",
+            "type": "string",
+            "description": "Optional caller-owned CRM, spreadsheet, or location key carried through unchanged."
+          }
+        },
+        "required": [
+          "businessName",
+          "phone",
+          "city"
+        ]
+      }
+    },
+    "country": {
+      "title": "Search country",
+      "type": "string",
+      "description": "Google search country used for directory discovery. The v0.1 directory set is US-oriented; use another supported market only when its directories are relevant to your audit.",
+      "editor": "select",
+      "default": "US",
+      "prefill": "US",
+      "enum": [
+        "US",
+        "CA",
+        "GB",
+        "AU"
+      ]
+    },
+    "maxBusinesses": {
+      "title": "Maximum businesses to process",
+      "type": "integer",
+      "description": "Hard cap for businesses processed in this run. Defaults to 10, accepts 1 to 50, and limits event charges to $0.25 per completed audit plus Apify platform usage.",
+      "editor": "number",
+      "default": 10,
+      "prefill": 10,
+      "minimum": 1,
+      "maximum": 50
+    }
+  },
+  "required": [
+    "businesses"
+  ]
+}

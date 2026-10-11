@@ -1,0 +1,378 @@
+{
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "title": "URL",
+      "description": "Final public URL represented by the saved row.",
+      "example": "https://example.com/"
+    },
+    "requestedUrl": {
+      "type": "string",
+      "title": "Requested URL",
+      "description": "Normalized URL requested before any public redirect.",
+      "example": "https://example.com/"
+    },
+    "statusCode": {
+      "type": "integer",
+      "title": "Status",
+      "description": "HTTP status code returned for this URL.",
+      "example": 200
+    },
+    "statusText": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Status text",
+      "description": "HTTP response status text when supplied.",
+      "example": "OK"
+    },
+    "contentType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Content type",
+      "description": "Response Content-Type header captured during the crawl.",
+      "example": "text/html; charset=UTF-8"
+    },
+    "indexability": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Indexability",
+      "description": "High-level indexability decision from response and directives.",
+      "example": "Indexable"
+    },
+    "indexabilityStatus": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Indexability detail",
+      "description": "Specific status such as OK, noindex, or Redirected.",
+      "example": "OK"
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Title",
+      "description": "HTML title element extracted from the fetched page.",
+      "example": "Example Domain"
+    },
+    "titleLength": {
+      "type": "integer",
+      "title": "Title length",
+      "description": "Character count of the extracted HTML title.",
+      "example": 14
+    },
+    "metaDescription": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Meta description",
+      "description": "Content of the page meta description tag.",
+      "example": "This domain is for use in illustrative examples."
+    },
+    "metaDescriptionLength": {
+      "type": "integer",
+      "title": "Meta description length",
+      "description": "Character count of the extracted meta description.",
+      "example": 48
+    },
+    "metaKeywords": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Meta keywords",
+      "description": "Content of the legacy meta keywords tag.",
+      "example": "example, domain"
+    },
+    "metaRobots": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Meta robots",
+      "description": "Robots directives declared in an HTML meta tag.",
+      "example": "index,follow"
+    },
+    "xRobotsTag": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "X-Robots-Tag",
+      "description": "Robots directives declared in the HTTP response header.",
+      "example": "noindex"
+    },
+    "canonicalUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Canonical URL",
+      "description": "Resolved canonical link target found in page HTML.",
+      "example": "https://example.com/"
+    },
+    "h1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "First H1",
+      "description": "First unique H1 text extracted from the page.",
+      "example": "Example Domain"
+    },
+    "h1Secondary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Second H1",
+      "description": "Second unique H1 text when the page has multiple H1s.",
+      "example": "More information"
+    },
+    "h1Count": {
+      "type": "integer",
+      "title": "H1 count",
+      "description": "Number of H1 elements present in the fetched HTML.",
+      "example": 1
+    },
+    "h2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "First H2",
+      "description": "First unique H2 text extracted from the page.",
+      "example": "About this domain"
+    },
+    "h2Count": {
+      "type": "integer",
+      "title": "H2 count",
+      "description": "Number of H2 elements present in the fetched HTML.",
+      "example": 2
+    },
+    "htmlLang": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "HTML language",
+      "description": "Value of the root html lang attribute.",
+      "example": "en"
+    },
+    "wordCount": {
+      "type": "integer",
+      "title": "Visible word count",
+      "description": "Approximate visible body-word count after non-content tags are removed.",
+      "example": 82
+    },
+    "textRatioPct": {
+      "type": "integer",
+      "title": "Text ratio percent",
+      "description": "Approximate visible text percentage of the response HTML.",
+      "example": 24
+    },
+    "sizeBytes": {
+      "type": "integer",
+      "title": "Response bytes",
+      "description": "Byte length of the response body processed by the crawler.",
+      "example": 1532
+    },
+    "responseTimeMs": {
+      "type": "integer",
+      "title": "Response time ms",
+      "description": "Observed request-to-response duration in milliseconds.",
+      "example": 245
+    },
+    "crawlDepth": {
+      "type": "integer",
+      "title": "Crawl depth",
+      "description": "Link-hop depth from the source seed URL.",
+      "example": 0
+    },
+    "inlinks": {
+      "type": "integer",
+      "title": "Inlinks from crawled set",
+      "description": "Inlinks to this URL from other rows in the saved crawl set.",
+      "example": 3
+    },
+    "uniqueInlinks": {
+      "type": "integer",
+      "title": "Unique inlinks",
+      "description": "Distinct crawled pages linking to this URL.",
+      "example": 3
+    },
+    "outlinks": {
+      "type": "integer",
+      "title": "Outlinks",
+      "description": "Total on-page internal and external href count.",
+      "example": 12
+    },
+    "uniqueOutlinks": {
+      "type": "integer",
+      "title": "Unique outlinks",
+      "description": "Distinct normalized href targets from this page.",
+      "example": 10
+    },
+    "internalOutlinks": {
+      "type": "integer",
+      "title": "Internal outlinks",
+      "description": "On-page links inside the configured source domain.",
+      "example": 8
+    },
+    "externalOutlinks": {
+      "type": "integer",
+      "title": "External outlinks",
+      "description": "On-page links outside the configured source domain.",
+      "example": 4
+    },
+    "imageCount": {
+      "type": "integer",
+      "title": "Images",
+      "description": "Number of img elements discovered in the page HTML.",
+      "example": 5
+    },
+    "imagesMissingAlt": {
+      "type": "integer",
+      "title": "Images missing alt",
+      "description": "Count of img elements without non-empty alt text.",
+      "example": 1
+    },
+    "redirectUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Redirect target",
+      "description": "Observed redirect target when the request redirected.",
+      "example": "https://example.com/new-location"
+    },
+    "redirectChain": {
+      "type": "array",
+      "title": "Redirect chain",
+      "description": "Observed redirect targets encountered for the request.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "https://example.com/new-location"
+      ]
+    },
+    "schemaTypes": {
+      "type": "array",
+      "title": "JSON-LD types",
+      "description": "Unique schema.org JSON-LD @type values on the page.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "WebPage"
+      ]
+    },
+    "ogTitle": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Open Graph title",
+      "description": "Open Graph title metadata extracted from the page.",
+      "example": "Example Domain"
+    },
+    "ogDescription": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Open Graph description",
+      "description": "Open Graph description metadata extracted from the page.",
+      "example": "Illustrative example domain."
+    },
+    "twitterCard": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Twitter card",
+      "description": "Twitter card type metadata from the page.",
+      "example": "summary"
+    },
+    "hreflangCount": {
+      "type": "integer",
+      "title": "Hreflang count",
+      "description": "Number of alternate hreflang links in the page.",
+      "example": 2
+    },
+    "viewport": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Viewport",
+      "description": "Viewport meta tag value found in the document.",
+      "example": "width=device-width, initial-scale=1"
+    },
+    "charset": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Charset",
+      "description": "Charset declaration from the page metadata.",
+      "example": "utf-8"
+    },
+    "contentHash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Content hash",
+      "description": "Short hash of extracted page content for run comparison.",
+      "example": "a1b2c3d4e5f67890"
+    },
+    "issueFlags": {
+      "type": "array",
+      "title": "Issue flags",
+      "description": "Machine-readable on-page SEO flags for this URL.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "missing_meta_description",
+        "thin_content"
+      ]
+    },
+    "issueCount": {
+      "type": "integer",
+      "title": "Issue count",
+      "description": "Number of machine-readable issue flags on this row.",
+      "example": 2
+    },
+    "startUrl": {
+      "type": "string",
+      "title": "Source seed URL",
+      "description": "Original public seed URL that led to this row.",
+      "example": "https://example.com/"
+    },
+    "crawlScope": {
+      "type": "string",
+      "title": "Crawl scope",
+      "description": "Configured link-following scope for this row's crawl.",
+      "example": "same-hostname"
+    },
+    "scrapedAt": {
+      "type": "string",
+      "title": "Collected at",
+      "description": "ISO-8601 timestamp when this crawl result was saved.",
+      "example": "2026-09-07T00:00:00.000Z"
+    }
+  }
+}

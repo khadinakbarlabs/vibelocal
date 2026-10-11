@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local SEO Report"
+  short_description: "Build a private evidence-led report"
+  default_prompt: "Use $local-seo-report to turn these local SEO snapshots into an owner report and action plan."

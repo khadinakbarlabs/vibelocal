@@ -1,0 +1,117 @@
+{
+  "title": "Google SERP Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "queries": {
+      "title": "Search Queries",
+      "type": "array",
+      "description": "Use this field when the user provides keywords or search terms. Enter one or more queries — each is scraped separately, one result record per page. Do NOT use this when the user provides a direct Google search URL — use startUrls for that.",
+      "editor": "stringList",
+      "prefill": [
+        "best project management software",
+        "apify web scraping"
+      ],
+      "default": [
+        "apify web scraping"
+      ],
+      "sectionCaption": "Input — Search Queries or Direct URLs",
+      "sectionDescription": "Provide keyword queries, direct Google Search URLs, or both. At least one input is required."
+    },
+    "startUrls": {
+      "title": "Direct Google Search URLs",
+      "type": "array",
+      "description": "Use this field when the user provides a specific Google search URL (e.g. https://www.google.com/search?q=...). Country/language settings are embedded in the URL itself. Do NOT use this for plain keyword queries — use queries instead.",
+      "editor": "requestListSources",
+      "default": []
+    },
+    "maxResultsPages": {
+      "title": "Max Result Pages Per Query",
+      "type": "integer",
+      "description": "How many pages of Google results to scrape per query. Each page = 10 organic results (default). 1 = positions 1–10, 3 = positions 1–30, 10 = positions 1–100. Each page = 1 billing event.",
+      "minimum": 1,
+      "maximum": 50,
+      "default": 1,
+      "prefill": 1,
+      "sectionCaption": "Scraping Settings",
+      "sectionDescription": "Control how many results to extract per query."
+    },
+    "resultsPerPage": {
+      "title": "Results Per Page",
+      "type": "integer",
+      "description": "Number of organic results per page. Google default is 10. Increase for more results per billing event (up to 100). Recommended values: 10, 20, 30, 50, 100.",
+      "minimum": 10,
+      "maximum": 100,
+      "default": 10,
+      "prefill": 10
+    },
+    "countryCode": {
+      "title": "Country Code (gl)",
+      "type": "string",
+      "description": "Google country targeting. Controls which regional Google index is queried. Examples: US, GB, DE, FR, AU, CA, IN, BR, JP, MX. Leave empty for global results.",
+      "editor": "textfield",
+      "default": "US",
+      "prefill": "US",
+      "maxLength": 5,
+      "sectionCaption": "Localization",
+      "sectionDescription": "Target specific countries and languages for geo-specific SERP data."
+    },
+    "languageCode": {
+      "title": "Language Code (hl)",
+      "type": "string",
+      "description": "Google interface and results language. Examples: en, es, de, fr, pt, ja, zh-CN, ar, ru. Controls Google UI language and biases results toward that language.",
+      "editor": "textfield",
+      "default": "en",
+      "prefill": "en",
+      "maxLength": 10
+    },
+    "includeAds": {
+      "title": "Extract Ad Results",
+      "type": "boolean",
+      "description": "Extract paid Google Ads appearing at the top and bottom of results pages. Results stored in the ad_results array field.",
+      "default": true,
+      "prefill": true,
+      "sectionCaption": "SERP Features to Extract",
+      "sectionDescription": "Choose which SERP elements to include in the output."
+    },
+    "includeFeaturedSnippet": {
+      "title": "Extract Featured Snippet",
+      "type": "boolean",
+      "description": "Extract the featured snippet (answer box / Position 0) when present on the SERP. Stored in the featured_snippet field.",
+      "default": true,
+      "prefill": true
+    },
+    "includePeopleAlsoAsk": {
+      "title": "Extract People Also Ask",
+      "type": "boolean",
+      "description": "Extract the 'People Also Ask' questions section. Useful for content research, FAQ generation, and topic clustering. Stored in the people_also_ask array.",
+      "default": true,
+      "prefill": true
+    },
+    "includeRelatedSearches": {
+      "title": "Extract Related Searches",
+      "type": "boolean",
+      "description": "Extract related search suggestions from the bottom of the SERP. Excellent for keyword research and topic mapping. Stored in the related_searches array.",
+      "default": true,
+      "prefill": true
+    },
+    "includeKnowledgeGraph": {
+      "title": "Extract Knowledge Graph",
+      "type": "boolean",
+      "description": "Extract the Knowledge Graph panel (entity info box) when present. Contains entity title, type, description, and official website. Stored in the knowledge_graph field.",
+      "default": true,
+      "prefill": true
+    },
+    "maxConcurrency": {
+      "title": "Max Concurrent Requests",
+      "type": "integer",
+      "description": "Number of parallel requests sent to Google. Higher = faster but more likely to trigger rate limits. Recommended: 5 for standard use, 2–3 if experiencing blocks.",
+      "minimum": 1,
+      "maximum": 20,
+      "default": 5,
+      "prefill": 5,
+      "sectionCaption": "Performance",
+      "sectionDescription": "Advanced performance tuning. Default settings work well for most use cases."
+    }
+  }
+}

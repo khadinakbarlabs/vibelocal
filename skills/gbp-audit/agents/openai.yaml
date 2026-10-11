@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google Business Profile Audit"
+  short_description: "Audit public profile accuracy"
+  default_prompt: "Use $gbp-audit to audit this Google Business Profile and prepare evidence-backed owner edit drafts."

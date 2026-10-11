@@ -1,0 +1,13 @@
+{
+  "name": "vibelocal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Google Business Profile, Google Maps rankings and local SEO workflows powered by Apify Actors.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node scripts/validate.mjs",
+    "demo": "node skills/vibelocal/scripts/cli.mjs demo --out .vibelocal/demo"
+  }
+}

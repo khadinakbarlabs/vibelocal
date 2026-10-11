@@ -1,0 +1,161 @@
+{
+  "maps-ranks": {
+    "slug": "local-rank-tracker",
+    "id": "150Bt0Oaw0KmwnodN",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/local-rank-tracker",
+    "buildId": "d1GSdK1YZ6lNHq8KG",
+    "buildNumber": "0.1.25",
+    "schemaSha256": "c7c0b6f6fe11f18a9223b8ef73959f3ba3605fdb7104c774bb997302620ed256",
+    "checkedAt": "2026-10-11",
+    "event": "local-rank-check",
+    "eventRates": {
+      "apify-actor-start": 0.00005,
+      "local-rank-check": 0.06
+    },
+    "platformUsagePaidByUser": false,
+    "maxRows": 500,
+    "memoryMbytes": 512,
+    "timeoutSecs": 600,
+    "terminalKeys": [
+      "OUTPUT",
+      "RUN_SUMMARY"
+    ]
+  },
+  "local-pack": {
+    "slug": "google-local-pack-api",
+    "id": "YpwdWR0SnyI3jTWx6",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/google-local-pack-api",
+    "buildId": "F9orP0ImyrO1kBlMr",
+    "buildNumber": "0.2.3",
+    "schemaSha256": "856526bacc9d503136ca39e06881cee87a70cc0946ace69214d0b77d54ae288e",
+    "checkedAt": "2026-10-11",
+    "event": "local-pack-snapshot",
+    "eventRates": {
+      "apify-actor-start": 0.00005,
+      "local-pack-snapshot": 0.03
+    },
+    "platformUsagePaidByUser": false,
+    "maxRows": 500,
+    "memoryMbytes": 256,
+    "timeoutSecs": 300,
+    "terminalKeys": [
+      "OUTPUT",
+      "RUN_SUMMARY"
+    ]
+  },
+  "places": {
+    "slug": "google-maps-extractor",
+    "id": "c77y9zjyEMnlRbaZH",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/google-maps-extractor",
+    "buildId": "Myp6EbsjRona75P5V",
+    "buildNumber": "1.0.5",
+    "schemaSha256": "55857ff37080b33db555e08ef6547b5814b4a868d23320eaaf8a7a1ce00bf402",
+    "checkedAt": "2026-10-11",
+    "event": "place-scraped",
+    "eventRates": {
+      "apify-actor-start": 0.00005,
+      "place-scraped": 0.005
+    },
+    "platformUsagePaidByUser": true,
+    "maxRows": 100,
+    "memoryMbytes": 2048,
+    "timeoutSecs": 600,
+    "terminalKeys": [
+      "OUTPUT",
+      "RUN_SUMMARY"
+    ]
+  },
+  "reviews": {
+    "slug": "google-maps-reviews-scraper",
+    "id": "AktHAcFexdMKzxCux",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/google-maps-reviews-scraper",
+    "buildId": "fiwAdaalNtbYxExuS",
+    "buildNumber": "0.5.3",
+    "schemaSha256": "8d2ba8905269c68a31c9aa254a7de4b8854fed6d8671a3bba4b5d5b16ae51e6d",
+    "checkedAt": "2026-10-11",
+    "event": "review-scraped",
+    "eventRates": {
+      "apify-actor-start": 0.00005,
+      "review-scraped": 0.0003
+    },
+    "platformUsagePaidByUser": true,
+    "maxRows": 1000,
+    "memoryMbytes": 1024,
+    "timeoutSecs": 600,
+    "terminalKeys": [
+      "OUTPUT",
+      "RUN_SUMMARY"
+    ],
+    "additionalCostNote": "The reviews Actor may invoke compass/crawler-google-places as a separately billed fallback using the caller run credential. Its documented event-charge ceiling is $0.50 per fallback run; proxy/platform usage can add costs. The primary Actor event cap does not cap this child run or the total invoice."
+  },
+  "citations": {
+    "slug": "yext-alternative",
+    "id": "tNfYw3ji6hdtmS3I4",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/yext-alternative",
+    "buildId": "IG5EQlmcH1fwpLyDt",
+    "buildNumber": "0.1.6",
+    "schemaSha256": "661b7207175ab160079bb2acb1820b9d085ffff69a683977162dec8b581b5591",
+    "checkedAt": "2026-10-11",
+    "event": "citation-audited",
+    "eventRates": {
+      "apify-actor-start": 0.00005,
+      "citation-audited": 0.25
+    },
+    "platformUsagePaidByUser": false,
+    "maxRows": 10,
+    "memoryMbytes": 4096,
+    "timeoutSecs": 600,
+    "terminalKeys": [
+      "OUTPUT",
+      "RUN_SUMMARY"
+    ]
+  },
+  "website": {
+    "slug": "website-seo-spider",
+    "id": "f0PPU2rWRKUBwAfeZ",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/website-seo-spider",
+    "buildId": "VgcoYYZsbn0qxADMx",
+    "buildNumber": "0.2.5",
+    "schemaSha256": "8767dda481755f286af2a1be8be4ff27f658c5c924a41d0b8deadcb144303c92",
+    "checkedAt": "2026-10-11",
+    "event": "page-crawled",
+    "eventRates": {
+      "apify-actor-start": 0.00005,
+      "page-crawled": 0.01
+    },
+    "platformUsagePaidByUser": false,
+    "maxRows": 100,
+    "memoryMbytes": 512,
+    "timeoutSecs": 600,
+    "terminalKeys": [
+      "OUTPUT",
+      "RUN_SUMMARY"
+    ]
+  },
+  "serp": {
+    "slug": "scrape-google-serp",
+    "id": "z0r97dqhtUQk2AXd8",
+    "owner": "khadinakbar",
+    "url": "https://apify.com/khadinakbar/scrape-google-serp",
+    "buildId": "ZnPFdByDFDsblxVt8",
+    "buildNumber": "1.0.21",
+    "schemaSha256": "ec7803231aab5cfd5433e0cff6670f352cf5c29ab94099d1fd42f1958cae1f13",
+    "checkedAt": "2026-10-11",
+    "event": "scraped-serp-page",
+    "eventRates": {
+      "scraped-serp-page": 0.0018,
+      "apify-actor-start": 0.00005
+    },
+    "platformUsagePaidByUser": true,
+    "maxRows": 20,
+    "memoryMbytes": 1024,
+    "timeoutSecs": 600,
+    "terminalKeys": []
+  }
+}

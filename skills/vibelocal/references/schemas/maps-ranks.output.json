@@ -1,0 +1,365 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "runId": {
+      "type": "string",
+      "title": "Run ID",
+      "description": "Apify run ID for this rank snapshot.",
+      "example": "abc123"
+    },
+    "checkedAt": {
+      "type": "string",
+      "title": "Checked at",
+      "description": "ISO 8601 timestamp when this keyword/location snapshot completed.",
+      "format": "date-time",
+      "example": "2026-08-09T12:00:00.000Z"
+    },
+    "keyword": {
+      "type": "string",
+      "title": "Keyword",
+      "description": "Exact Google search term checked.",
+      "example": "dentist near me"
+    },
+    "locationLabel": {
+      "type": "string",
+      "title": "Location label",
+      "description": "User-provided label for the geographic point.",
+      "example": "Downtown"
+    },
+    "locationCode": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Location code",
+      "description": "DataForSEO location code when used.",
+      "example": 2840
+    },
+    "locationName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Location name",
+      "description": "DataForSEO location name when used.",
+      "example": "New York,New York,United States"
+    },
+    "locationCoordinate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Location coordinate",
+      "description": "Coordinate or radius used for the snapshot.",
+      "example": "40.7128,-74.0060,500"
+    },
+    "languageCode": {
+      "type": "string",
+      "title": "Language",
+      "description": "Google language code used for the snapshot.",
+      "example": "en"
+    },
+    "device": {
+      "type": "string",
+      "title": "Device",
+      "description": "Google device profile used.",
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "example": "desktop"
+    },
+    "depth": {
+      "type": "integer",
+      "title": "Maps depth",
+      "description": "Requested Google Maps result depth.",
+      "example": 100
+    },
+    "businessName": {
+      "type": "string",
+      "title": "Tracked business",
+      "description": "Business name supplied for matching.",
+      "example": "Acme Dental"
+    },
+    "targetDomain": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Tracked domain",
+      "description": "Optional domain supplied for matching.",
+      "example": "acmedental.com"
+    },
+    "placeId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Google place ID",
+      "description": "Optional place identifier supplied for exact matching.",
+      "example": "ChIJ..."
+    },
+    "cid": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Google CID",
+      "description": "Optional Google client ID supplied for exact matching.",
+      "example": "123456789"
+    },
+    "localPackRank": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Local-pack rank",
+      "description": "Tracked business position within the returned local pack, or null when not found.",
+      "example": 2
+    },
+    "organicRank": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Organic rank compatibility field",
+      "description": "Compatibility field retained for stable output shape; always null for this Maps-only endpoint.",
+      "example": null
+    },
+    "localPackFound": {
+      "type": "boolean",
+      "title": "Found in local pack",
+      "description": "Whether the target matched a local-pack result.",
+      "example": true
+    },
+    "organicFound": {
+      "type": "boolean",
+      "title": "Organic match compatibility field",
+      "description": "Compatibility field retained for stable output shape; false for this Maps-only endpoint.",
+      "example": false
+    },
+    "rankStatus": {
+      "type": "string",
+      "title": "Maps rank status",
+      "description": "Whether the target matched a returned Google Maps result in this snapshot.",
+      "enum": [
+        "local_pack",
+        "organic_only",
+        "not_found"
+      ],
+      "example": "local_pack"
+    },
+    "targetMatchMethod": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Target match method",
+      "description": "Signal that matched the target: place_id, cid, domain, or normalized business name.",
+      "example": "domain"
+    },
+    "localPackSize": {
+      "type": "integer",
+      "title": "Local-pack size",
+      "description": "Number of local-pack businesses parsed from this snapshot.",
+      "example": 3
+    },
+    "localPackResults": {
+      "type": "array",
+      "title": "Local-pack results",
+      "description": "Compact businesses returned in the same local-pack snapshot, including rank and public rating signals when available.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Business name shown by the provider."
+          },
+          "rank": {
+            "type": "integer",
+            "description": "Position in the returned local pack."
+          },
+          "domain": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Normalized business website domain when available."
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Provider business or website URL when available."
+          },
+          "cid": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Google CID when returned by the provider."
+          },
+          "placeId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Google place ID when returned by the provider."
+          },
+          "rating": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Public rating when returned by the provider."
+          },
+          "reviewCount": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Public review count when returned by the provider."
+          }
+        },
+        "required": [
+          "name",
+          "rank"
+        ]
+      },
+      "example": [
+        {
+          "name": "Acme Dental",
+          "rank": 2,
+          "domain": "acmedental.com"
+        }
+      ]
+    },
+    "competitorRanks": {
+      "type": "array",
+      "title": "Competitor ranks",
+      "description": "Requested competitor names found in the same returned Google Maps results.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Matched competitor business name."
+          },
+          "rank": {
+            "type": "integer",
+            "description": "Position in the returned result type."
+          },
+          "rankType": {
+            "type": "string",
+            "enum": [
+              "local_pack",
+              "organic"
+            ],
+            "description": "Result surface where the competitor was found."
+          },
+          "domain": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Normalized competitor domain when available."
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Competitor URL when available."
+          }
+        },
+        "required": [
+          "name",
+          "rank",
+          "rankType"
+        ]
+      },
+      "example": [
+        {
+          "name": "Rival Dental",
+          "rank": 1,
+          "rankType": "local_pack"
+        }
+      ]
+    },
+    "provider": {
+      "type": "string",
+      "title": "Provider",
+      "description": "Underlying SERP data provider.",
+      "example": "dataforseo"
+    },
+    "providerMode": {
+      "type": "string",
+      "title": "Provider mode",
+      "description": "DataForSEO Standard economy queue or explicit Live realtime mode.",
+      "enum": [
+        "standard",
+        "live"
+      ],
+      "example": "standard"
+    },
+    "providerCostUsd": {
+      "type": "number",
+      "title": "Provider cost",
+      "description": "Cost reported by DataForSEO for this provider request; billed on the supplied DataForSEO account.",
+      "example": 0.0006
+    },
+    "checkUrl": {
+      "type": "string",
+      "title": "SERP check URL",
+      "description": "Provider verification URL when available, or a reconstructed Google query URL.",
+      "example": "https://www.google.com/search?q=dentist+near+me"
+    },
+    "serpItemTypes": {
+      "type": "array",
+      "title": "Maps item types",
+      "description": "Provider-reported Google Maps element types in this snapshot.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "maps_search"
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "title": "Warnings",
+      "description": "Non-fatal interpretation or empty-result warnings for this row.",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  },
+  "required": [
+    "runId",
+    "checkedAt",
+    "keyword",
+    "locationLabel",
+    "languageCode",
+    "device",
+    "depth",
+    "businessName",
+    "localPackRank",
+    "organicRank",
+    "localPackFound",
+    "organicFound",
+    "rankStatus",
+    "targetMatchMethod",
+    "localPackSize",
+    "localPackResults",
+    "competitorRanks",
+    "provider",
+    "providerMode",
+    "providerCostUsd",
+    "checkUrl",
+    "serpItemTypes",
+    "warnings"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://apify.com/schemas/v1/input.ide.json",
+  "title": "Google Maps Reviews Scraper",
+  "description": "Extract reviews from any Google Maps place. Provide Google Maps URLs, Place IDs, CIDs, or a business name plus location. Use this tool for reputation monitoring, sentiment analysis, and competitive review research. Do NOT use for business contact info — see khadinakbar/google-maps-leads-scraper.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "🔗 Google Maps URLs",
+      "type": "array",
+      "description": "List of Google Maps URLs to scrape reviews from. Accepts place URLs (https://www.google.com/maps/place/...), search URLs, CID URLs (?cid=...), and shortened maps.app.goo.gl links. Each URL yields reviews for one place. Do NOT paste Google Search result URLs — only maps.google.com / google.com/maps URLs are supported.",
+      "editor": "requestListSources",
+      "prefill": []
+    },
+    "placeIds": {
+      "title": "🗂 Place IDs",
+      "type": "array",
+      "description": "Opaque Google Place IDs, including variable-length ChIJ, GhIJ, Eic and Iho forms. This Actor limits each ID to 2048 ASCII letters, digits, underscores or hyphens; this is an application input bound, not a Google ID-length rule. Use startUrls for a Maps URL and dataIds for 0x...:0x... IDs.",
+      "editor": "stringList",
+      "default": []
+    },
+    "dataIds": {
+      "title": "Google Maps data IDs / CIDs",
+      "type": "array",
+      "description": "Google Maps internal data IDs in exact 0x...:0x... format. For a decimal CID, provide a Google Maps ?cid= URL in startUrls.",
+      "editor": "stringList",
+      "default": [],
+      "example": [
+        "0x89c259a9b3117469:0xd134e199a405a163"
+      ]
+    },
+    "searchQuery": {
+      "title": "🔍 Search Query (alternative to URLs)",
+      "type": "string",
+      "description": "Free-text business name or keyword (e.g., 'Joe's Pizza Manhattan' or 'Apple Store Regent Street'). Used with the location field to find one place and scrape its reviews. Leave empty if you are providing startUrls or placeIds — do NOT use this for broad searches, use a specific business name.",
+      "editor": "textfield",
+      "prefill": "Eiffel Tower",
+      "example": "Joe's Pizza Manhattan"
+    },
+    "location": {
+      "title": "📍 Location (with searchQuery)",
+      "type": "string",
+      "description": "City, region, or country used to disambiguate the searchQuery (e.g., 'New York, NY' or 'London, UK'). Ignored when startUrls or placeIds are provided. Leave empty for global search on searchQuery.",
+      "editor": "textfield",
+      "prefill": "Paris, France",
+      "example": "New York, NY"
+    },
+    "maxReviews": {
+      "title": "⭐ Max reviews (whole run)",
+      "type": "integer",
+      "description": "Maximum number of reviews saved across all targets in this run, from 1 to 5000. Start with 1–5 to test a place. Result charges apply to saved reviews; proxy usage and a separately charged caller-funded fallback may also apply.",
+      "default": 100,
+      "prefill": 1,
+      "minimum": 1,
+      "maximum": 5000
+    },
+    "reviewsSort": {
+      "title": "📅 Sort reviews by",
+      "type": "string",
+      "description": "Order in which reviews are fetched from Google. 'newest' is best for monitoring recent feedback, 'mostRelevant' matches Google's default, 'highestRanking' / 'lowestRanking' for best/worst first. Affects which reviews you hit the maxReviews cap on.",
+      "enum": [
+        "newest",
+        "mostRelevant",
+        "highestRanking",
+        "lowestRanking"
+      ],
+      "enumTitles": [
+        "Newest first",
+        "Most relevant (Google default)",
+        "Highest rating first",
+        "Lowest rating first"
+      ],
+      "default": "newest"
+    },
+    "reviewSearchQuery": {
+      "title": "Review keyword filter",
+      "type": "string",
+      "description": "Optional keyword to search inside Google Maps reviews before extraction. Use this when you only need reviews mentioning a phrase such as 'parking' or 'refund'. Defaults to no keyword filter. Not a business search query — use Search Query above to find the place itself. The query must fit within 500 UTF-8 bytes.",
+      "editor": "textfield",
+      "default": "",
+      "example": "parking",
+      "maxLength": 500
+    },
+    "language": {
+      "title": "🌍 Language",
+      "type": "string",
+      "description": "Language for the Google Maps UI and for review translations. 'en' returns English UI, reviews stay in their original language. Affects Google's 'N reviews' parsing and the text of the 'a month ago' date labels.",
+      "enum": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "it",
+        "pt",
+        "nl",
+        "pl",
+        "ru",
+        "ja",
+        "ko",
+        "zh-CN",
+        "ar",
+        "tr",
+        "hi",
+        "id",
+        "vi",
+        "th",
+        "sv",
+        "no",
+        "da",
+        "fi",
+        "cs",
+        "el",
+        "he"
+      ],
+      "default": "en"
+    },
+    "countryCode": {
+      "title": "Country hint",
+      "type": "string",
+      "description": "Two-letter Google region hint used for Maps review requests. Use this when review ordering or place resolution should match a specific market, for example US, GB, DE, or PK. Defaults to US. Not a proxy country selector by itself.",
+      "editor": "textfield",
+      "default": "US",
+      "example": "US"
+    },
+    "includePersonalData": {
+      "title": "🔒 Include reviewer personal data (GDPR)",
+      "type": "boolean",
+      "description": "When true, includes reviewer name, profile URL, and profile photo URL. When false (default), these are nulled out and only a stable reviewer hash is returned. Personal data is regulated by GDPR in the EU — keep disabled unless you have a legitimate purpose and documented basis. reviewId is always returned regardless of this setting.",
+      "default": false
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Proxy used to scrape Google Maps. Defaults to Apify Residential proxy which bypasses most Google bot checks. Do not override unless you know your proxy can handle Google.",
+      "editor": "proxy",
+      "prefill": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": [
+          "RESIDENTIAL"
+        ]
+      },
+      "default": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": [
+          "RESIDENTIAL"
+        ]
+      }
+    }
+  },
+  "required": []
+}

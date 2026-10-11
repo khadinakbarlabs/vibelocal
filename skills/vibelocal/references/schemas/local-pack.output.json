@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "runId": {
+      "type": "string",
+      "title": "Run ID",
+      "description": "Apify run that created this search snapshot.",
+      "example": "abc123"
+    },
+    "snapshotAt": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Snapshot time",
+      "description": "ISO timestamp when this Google SERP snapshot was processed.",
+      "example": "2026-08-24T12:00:00.000Z"
+    },
+    "query": {
+      "type": "string",
+      "title": "Google query",
+      "description": "Exact Google local-intent search term.",
+      "example": "dentist near me"
+    },
+    "locationLabel": {
+      "type": "string",
+      "title": "Location label",
+      "description": "Human-readable user label for the snapshot location.",
+      "example": "Downtown New York"
+    },
+    "locationCode": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Location code",
+      "description": "DataForSEO location code when used.",
+      "example": 2840
+    },
+    "locationName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Location name",
+      "description": "DataForSEO location name when used.",
+      "example": "New York,New York,United States"
+    },
+    "locationCoordinate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Location coordinate",
+      "description": "GPS coordinate and radius used when supplied.",
+      "example": "40.7128,-74.0060,500"
+    },
+    "languageCode": {
+      "type": "string",
+      "title": "Language",
+      "description": "Google result language code.",
+      "example": "en"
+    },
+    "device": {
+      "type": "string",
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "title": "Device",
+      "description": "Requested Google device layout.",
+      "example": "desktop"
+    },
+    "seDomain": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Google domain",
+      "description": "Optional requested Google domain.",
+      "example": "google.com"
+    },
+    "localPackFound": {
+      "type": "boolean",
+      "title": "Local Pack found",
+      "description": "Whether Google returned a local_pack element for this snapshot.",
+      "example": true
+    },
+    "localPackSize": {
+      "type": "integer",
+      "title": "Local Pack size",
+      "description": "Total valid businesses parsed from the returned local_pack element before the output cap.",
+      "example": 3
+    },
+    "returnedLocalPackSize": {
+      "type": "integer",
+      "title": "Returned businesses",
+      "description": "Number of local businesses included in this dataset row after applying maxLocalPackResults.",
+      "example": 3
+    },
+    "localPack": {
+      "type": "array",
+      "title": "Local Pack businesses",
+      "description": "Businesses returned in Google's Local Pack, in the provider's pack order.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "integer",
+            "description": "Position inside the local pack."
+          },
+          "name": {
+            "type": "string",
+            "description": "Business name returned by Google."
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Business category when returned."
+          },
+          "address": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Business address when returned."
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Public business phone when returned."
+          },
+          "website": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Public business website or provider URL when returned."
+          },
+          "domain": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Normalized website domain when available."
+          },
+          "businessProfileUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Google business-profile result URL when returned."
+          },
+          "bookingUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Public booking URL when returned."
+          },
+          "cid": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Google CID when returned."
+          },
+          "placeId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Google Place ID when returned."
+          },
+          "rating": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Public Google rating when returned."
+          },
+          "reviewCount": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Public review count when returned."
+          },
+          "latitude": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Business latitude when returned."
+          },
+          "longitude": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Business longitude when returned."
+          },
+          "isPaid": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Provider paid-placement signal when returned."
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Provider's public Local Pack description line when returned."
+          },
+          "distance": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Displayed distance from the requested location when present in the provider description."
+          },
+          "openStatus": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Displayed open or closed status when present."
+          },
+          "serviceOptions": {
+            "type": "array",
+            "description": "Public service-option text parsed from the provider description when present.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "position",
+          "name"
+        ]
+      },
+      "example": [
+        {
+          "position": 1,
+          "name": "Acme Dental",
+          "rating": 4.8,
+          "reviewCount": 120,
+          "domain": "acmedental.com"
+        }
+      ]
+    },
+    "providerNoResults": {
+      "type": "boolean",
+      "title": "Provider reported no results",
+      "description": "Whether DataForSEO explicitly returned its no-search-results task response.",
+      "example": false
+    },
+    "serpItemTypes": {
+      "type": "array",
+      "title": "SERP item types",
+      "description": "DataForSEO-reported top-level SERP element types.",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "local_pack",
+        "organic"
+      ]
+    },
+    "provider": {
+      "type": "string",
+      "title": "Provider",
+      "description": "Underlying SERP provider.",
+      "example": "dataforseo"
+    },
+    "providerCostUsd": {
+      "type": "number",
+      "title": "Provider cost",
+      "description": "Cost reported by DataForSEO for this request, billed to the owner-managed provider account.",
+      "example": 0.01
+    },
+    "checkUrl": {
+      "type": "string",
+      "title": "SERP verification URL",
+      "description": "Provider verification URL when available, otherwise a reconstructed Google search URL.",
+      "example": "https://www.google.com/search?q=dentist+near+me&hl=en"
+    },
+    "warnings": {
+      "type": "array",
+      "title": "Warnings",
+      "description": "Non-fatal result interpretation warnings.",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    }
+  },
+  "required": [
+    "runId",
+    "snapshotAt",
+    "query",
+    "locationLabel",
+    "languageCode",
+    "device",
+    "localPackFound",
+    "localPackSize",
+    "returnedLocalPackSize",
+    "localPack",
+    "providerNoResults",
+    "serpItemTypes",
+    "provider",
+    "providerCostUsd",
+    "checkUrl",
+    "warnings"
+  ]
+}

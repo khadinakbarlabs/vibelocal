@@ -1,0 +1,4 @@
+interface:
+  display_name: "Citation Audit"
+  short_description: "Review local listing consistency"
+  default_prompt: "Use $citation-audit to check this branch's directory evidence and prepare a correction queue."

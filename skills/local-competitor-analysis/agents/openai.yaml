@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Competitor Analysis"
+  short_description: "Compare relevant local competitors"
+  default_prompt: "Use $local-competitor-analysis to compare this business with nearby competitors for its main service."

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://apify.com/schemas/v1/input.ide.json",
+  "title": "Cloud SEO Crawl Export",
+  "type": "object",
+  "schemaVersion": 1,
+  "required": [
+    "startUrls"
+  ],
+  "properties": {
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "One or more public website URLs where the crawl begins. Example: https://example.com. Each seed keeps its own startUrl provenance. Same-hostname or same-domain links are followed up to maxPages.",
+      "editor": "requestListSources",
+      "prefill": [
+        {
+          "url": "https://example.com"
+        }
+      ]
+    },
+    "crawlScope": {
+      "title": "Crawl scope",
+      "type": "string",
+      "description": "Which internal links to follow from each HTML page. same-hostname stays on the exact host; same-domain also follows subdomains; page-only fetches the start URLs and stops. Defaults to same-hostname.",
+      "enum": [
+        "same-hostname",
+        "same-domain",
+        "page-only"
+      ],
+      "enumTitles": [
+        "Same hostname",
+        "Same domain",
+        "Start URLs only"
+      ],
+      "default": "same-hostname",
+      "prefill": "same-hostname"
+    },
+    "maxPages": {
+      "title": "Max pages",
+      "type": "integer",
+      "description": "Hard cap on public pages fetched in this run. Example: 10. Default 100, maximum 2000. Prefill 10 keeps the first sample bounded. When useful in-scope URLs remain at this cap, the run finishes PARTIAL.",
+      "default": 100,
+      "prefill": 10,
+      "minimum": 1,
+      "maximum": 2000
+    },
+    "maxDepth": {
+      "title": "Max crawl depth",
+      "type": "integer",
+      "description": "How many link hops from a start URL the crawler may follow. 0 means unlimited within maxPages. Default 10, prefill 3. Depth 0 is the start URL itself. Enable seedFromSitemap to add sitemap URLs as extra starts.",
+      "default": 10,
+      "prefill": 3,
+      "minimum": 0,
+      "maximum": 20
+    },
+    "seedFromSitemap": {
+      "title": "Seed from sitemap",
+      "type": "boolean",
+      "description": "When true, read robots.txt Sitemap entries and /sitemap.xml, then add in-scope URLs to the crawl queue up to maxPages. Defaults to false. Useful for coverage beyond the homepage link graph.",
+      "default": false,
+      "prefill": false
+    },
+    "respectRobotsTxt": {
+      "title": "Respect robots.txt",
+      "type": "boolean",
+      "description": "When true, skip paths disallowed for the crawler user-agent in robots.txt. Defaults to true. Turn off only for sites you are authorized to audit beyond the public robots policy.",
+      "default": true,
+      "prefill": true
+    },
+    "ignoreUrlParameters": {
+      "title": "Ignore URL parameters",
+      "type": "boolean",
+      "description": "When true, strip query strings before uniqueness so /page and /page?ref=nav count as one URL. Defaults to false. Enable for tracking-parameter cleanup; it does not rewrite canonical tags on the page.",
+      "default": false,
+      "prefill": false
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "type": "integer",
+      "description": "Parallel HTTP requests. Default and prefill are 5; maximum 20. Lower this for a rate-limited target. The crawler also applies a small same-domain delay for stable collection.",
+      "default": 5,
+      "prefill": 5,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "fetchMode": {
+      "title": "Fetch mode",
+      "type": "string",
+      "description": "Direct HTTP is the lower-cost default. Select residential Apify Proxy only for public sites you are authorized to collect when direct requests have repeatable rate limits; proxy platform costs can apply.",
+      "enum": [
+        "direct",
+        "residential"
+      ],
+      "enumTitles": [
+        "Direct HTTP",
+        "Residential Apify Proxy"
+      ],
+      "default": "direct",
+      "prefill": "direct"
+    },
+    "proxyConfiguration": {
+      "title": "Advanced proxy configuration",
+      "type": "object",
+      "description": "Optional advanced Apify Proxy configuration. When supplied, it overrides Fetch mode. Use it only for public targets you are authorized to audit; it does not provide login credentials or browser rendering.",
+      "editor": "proxy",
+      "example": {
+        "useApifyProxy": true
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.vibelocal/
+dist/
+node_modules/
+.env
+.env.*
+*.token
+*.key
+*.pem
+.DS_Store
+Thumbs.db
+coverage/

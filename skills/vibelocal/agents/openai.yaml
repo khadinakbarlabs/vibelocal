@@ -1,0 +1,4 @@
+interface:
+  display_name: "VibeLocal"
+  short_description: "Plan a local SEO audit"
+  default_prompt: "Use $vibelocal to audit my local business and choose the next useful local SEO improvement."

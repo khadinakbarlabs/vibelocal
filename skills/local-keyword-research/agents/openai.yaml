@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Keyword Research"
+  short_description: "Map services to local search intent"
+  default_prompt: "Use $local-keyword-research to build an evidence-backed local service keyword and page map."
